@@ -1,3 +1,6 @@
-<p>
-  child-component works!
-</p>
+<h1>{{appName + ' app'}}</h1>
+<input type="text" [(ngModel)]="appName">
+<button (click)="toggleChildComponent()">Toggle Child</button>
+<div>
+  <app-child-component *ngIf="toggleChild"></app-child-component>
+</div>
