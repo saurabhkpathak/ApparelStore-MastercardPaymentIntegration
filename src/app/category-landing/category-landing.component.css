@@ -1,0 +1,8 @@
+.apparel-item {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.apparel-item:nth-of-type(odd) {
+    clear: both;
+}

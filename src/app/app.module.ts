@@ -6,10 +6,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ChildComponentComponent } from './child-component/child-component.component';
+import { CategoryLandingComponent } from './category-landing/category-landing.component';
 
 const appRoutes: Routes = [
   { path: 'crisis-center', component: ChildComponentComponent },
-  { path: 'hero/:id', component: ChildComponentComponent },
+  { path: 'category/:categoryName', component: CategoryLandingComponent },
   {
     path: 'heroes',
     component: ChildComponentComponent,
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ChildComponentComponent
+    ChildComponentComponent,
+    CategoryLandingComponent
   ],
   imports: [
     BrowserModule,
