@@ -1,10 +1,35 @@
 <p>
   {{routeName}}
 </p>
-<div *ngFor="let item of apparels" class="apparel-item">
+<!-- <div *ngFor="let item of apparels" class="apparel-item">
   <img src="{{item.imageUrl}}" alt="">
   {{item.title}}
   {{item.price}}
   {{item.quantity}}
   {{item.sizes}}
-</div>
+</div> -->
+
+
+<mat-card class="apparel-item" *ngFor="let item of apparels">
+  <div class="apparel-item_inner">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <!-- <img src="{{item.imageUrl}}" alt="" class=""> -->
+      </div>
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img mat-card-image src="{{item.imageUrl}}" alt="">
+    <mat-card-content>
+      <p>
+        {{item.price}}
+        {{item.quantity}}
+        {{item.sizes}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>VIEW</button>
+      <button mat-button>ADD TO CART</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
