@@ -1,5 +1,5 @@
 export class Apparel {
-    quantity: number;
+    quantity: number[];
     price: number;
     title: string;
     sizes: string[];

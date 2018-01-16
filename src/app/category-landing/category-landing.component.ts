@@ -61,7 +61,7 @@ export class CategoryLandingComponent implements OnInit {
     for (let i = 0; i < 8; i++) {
       newApparel = new Apparel();
       newApparel.price = 10;
-      newApparel.quantity = 10;
+      newApparel.quantity = [1, 2, 3, 4, 5];
       newApparel.sizes = ['S', 'M', 'L'];
       newApparel.title = `Shirt` + i;
       newApparel.imageUrl = 'assets/images/' + this.routeName + '/' + (i + 1) + '.jpg';
