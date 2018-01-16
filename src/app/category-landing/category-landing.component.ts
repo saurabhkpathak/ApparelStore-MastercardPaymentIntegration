@@ -4,7 +4,9 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import { WindowRef } from '../window-ref';
+import { DialogComponent } from '../dialog/dialog.component';
 import { ChangeDetectorRef } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-category-landing',
@@ -17,7 +19,8 @@ export class CategoryLandingComponent implements OnInit {
   routeName: any;
   SimplifyCommerce: any;
   constructor(private route: ActivatedRoute, private http: Http,
-    private winRef: WindowRef, private changeRef: ChangeDetectorRef) { }
+    private winRef: WindowRef, private changeRef: ChangeDetectorRef,
+  public dialog: MatDialog) { }
 
   ngOnInit() {
     this.apparels = [];
@@ -67,6 +70,17 @@ export class CategoryLandingComponent implements OnInit {
       newApparel.imageUrl = 'assets/images/' + this.routeName + '/' + (i + 1) + '.jpg';
       this.apparels.push(newApparel);
     }
+  }
+
+  openDialog(product) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '50%',
+      data: { imgUrl: product.imageUrl}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
