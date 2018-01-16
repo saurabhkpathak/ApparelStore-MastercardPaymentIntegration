@@ -18,20 +18,14 @@ import { DialogComponent } from './dialog/dialog.component';
 import { CartAndPaymentComponent } from './cart-and-payment/cart-and-payment.component';
 
 const appRoutes: Routes = [
-  { path: 'crisis-center', component: ChildComponentComponent },
   { path: 'category/:categoryName', component: CategoryLandingComponent },
   { path: 'payment', component: CartAndPaymentComponent},
   {
-    path: 'heroes',
-    component: ChildComponentComponent,
-    data: { title: 'Heroes List' }
-  },
-  {
     path: '',
-    redirectTo: '/heroes',
+    redirectTo: '/payment',
     pathMatch: 'full'
   },
-  { path: '**', component: ChildComponentComponent }
+  { path: '**', component: CartAndPaymentComponent }
 ];
 
 @NgModule({
