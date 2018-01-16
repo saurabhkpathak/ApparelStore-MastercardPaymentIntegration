@@ -4,4 +4,6 @@ export class Apparel {
     title: string;
     sizes: string[];
     imageUrl: string;
+    selectedQuantity = 0;
+    selectedSize = '';
 }
