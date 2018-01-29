@@ -16,10 +16,12 @@ import { ChildComponentComponent } from './child-component/child-component.compo
 import { CategoryLandingComponent } from './category-landing/category-landing.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { CartAndPaymentComponent } from './cart-and-payment/cart-and-payment.component';
+import { FbPagesComponent } from './fb-pages/fb-pages.component';
 
 const appRoutes: Routes = [
   { path: 'category/:categoryName', component: CategoryLandingComponent },
   { path: 'payment', component: CartAndPaymentComponent},
+  { path: 'fbPages', component: FbPagesComponent},
   {
     path: '',
     redirectTo: '/payment',
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     ChildComponentComponent,
     CategoryLandingComponent,
     DialogComponent,
-    CartAndPaymentComponent
+    CartAndPaymentComponent,
+    FbPagesComponent
   ],
   imports: [
     BrowserModule,

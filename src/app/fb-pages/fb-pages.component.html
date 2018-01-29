@@ -1,0 +1,10 @@
+<p *ngFor="let stat of status">
+  {{stat}} <br>
+</p>
+<button (click)="getPageList()">Get Pages</button>
+<ul *ngIf="pages.length">
+  <li *ngFor="let page of pages">
+    Category:{{page.category}} <br>
+    Name: {{page.name}} <br>
+  </li>
+</ul>
