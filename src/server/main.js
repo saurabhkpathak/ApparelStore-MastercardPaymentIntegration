@@ -22,7 +22,7 @@ server.on('request', function (request, response) {
     response.end();
   } else if (query.type === 'payment') {
     client.payment.create({
-      amount : "1000",
+      amount : query.amount,
       token : query.id,
       description : "payment description",
       currency : "USD"

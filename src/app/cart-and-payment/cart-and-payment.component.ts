@@ -20,6 +20,7 @@ export class CartAndPaymentComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
+  paymentStatus: string;
 
   constructor(private winRef: WindowRef, private _formBuilder: FormBuilder,
     private changeRef: ChangeDetectorRef, private http: Http) { }
@@ -27,6 +28,7 @@ export class CartAndPaymentComponent implements OnInit {
   ngOnInit() {
     this.cartItems = JSON.parse(this.winRef.nativeWindow.localStorage.getItem('cart'));
     this.SimplifyCommerce = this.winRef.nativeWindow.SimplifyCommerce;
+    this.paymentStatus = '';
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -47,25 +49,31 @@ export class CartAndPaymentComponent implements OnInit {
   }
 
   generateTokenAndFinishPayment() {
+    const cardDetails = {
+      number: this.firstFormGroup.value.firstCtrl,
+      cvc: this.fourthFormGroup.value.fourthCtrl,
+      expMonth: this.secondFormGroup.value.secondCtrl,
+      expYear: this.thirdFormGroup.value.thirdCtrl
+    };
     this.getPublicKey()
     .subscribe((res) => {
       this.SimplifyCommerce.generateToken({
         key: res.publicKey,
-        card: {
-            number: '5555555555554444',
-            cvc: '123',
-            expMonth: '02',
-            expYear: '24'
-        }
+        card: cardDetails
       }, this.finishPayment.bind(this));
     });
   }
 
   finishPayment(data) {
-    this.http.get('http://localhost:8080?type=payment&id=' + data.id)
+    let sum = 0;
+    this.cartItems.map((item) => {
+      sum += item.selectedQuantity * item.price;
+    });
+    this.http.get('http://localhost:8080?type=payment&id=' + data.id + '&amount=' + sum)
       .map(res => res.json())
       .subscribe((res) => {
-        // this.routeName = res.paymentStatus;
+        debugger;
+        this.paymentStatus = 'Approved Payment';
         this.changeRef.detectChanges();
       });
   }
@@ -73,5 +81,9 @@ export class CartAndPaymentComponent implements OnInit {
   getPublicKey() {
     return this.http.get('http://localhost:8080?type=key')
       .map(res => res.json());
+  }
+
+  clearCart() {
+    this.winRef.nativeWindow.localStorage.setItem('cart', null);
   }
 }

@@ -1,6 +1,9 @@
-<p>
-  Cart Details
-</p>
+<header class="clearfix">
+  <p class="header-text">
+    Cart Details
+  </p>
+  <button class="clear-cart" mat-raised-button color="primary" (click)="clearCart()">Clear Cart</button>
+</header>
 <mat-accordion>
   <mat-expansion-panel *ngFor="let item of cartItems">
     <mat-expansion-panel-header>
@@ -12,16 +15,22 @@
         Tap to see added item details
       </mat-panel-description>
     </mat-expansion-panel-header>
-    Quantity: {{item.selectedQuantity}}
-    Size Selected: {{item.selectedSize}}
-    Unit Price: {{item.price}}
-    Item Image: <img mat-card-image src="{{item.imageUrl}}" alt="">
+    <div class="clearfix">
+      <div class="left">
+        <img mat-card-image src="{{item.imageUrl}}" alt="">
+      </div>
+      <div class="left">
+        <span>Quantity: {{item.selectedQuantity}}</span>
+        <span>Size Selected: {{item.selectedSize}}</span>
+        <span>Unit Price: {{item.price}}</span>
+      </div>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
 
-<p>
+<header class="payment-head">
   Proceed with Payment
-</p>
+</header>
 <mat-horizontal-stepper [linear]="isLinear">
     <mat-step [stepControl]="firstFormGroup" optional="false" label="saurabh">
       <form [formGroup]="firstFormGroup">
@@ -36,9 +45,9 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Fill out expiry month</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Name" formControlName="secondCtrl" required>
+          <input matInput placeholder="Expiry Month" formControlName="secondCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -48,9 +57,9 @@
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>Fill out expiry date</ng-template>
+          <ng-template matStepLabel>Fill out expiry year</ng-template>
           <mat-form-field>
-            <input matInput placeholder="Expiry Date" formControlName="thirdCtrl" required>
+            <input matInput placeholder="Expiry Year" formControlName="thirdCtrl" required>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
@@ -74,7 +83,8 @@
       <ng-template matStepLabel>Done</ng-template>
       Thanks for entering the card details.
       <div>
-        <button mat-raised-button color="primary" (click)="makePayment()" matStepperPrevious>Make Payment</button>
+        <button mat-raised-button color="primary" (click)="makePayment()" matStepperPrevious class="make-payment">Make Payment</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
+  <div>{{paymentStatus}}</div>
