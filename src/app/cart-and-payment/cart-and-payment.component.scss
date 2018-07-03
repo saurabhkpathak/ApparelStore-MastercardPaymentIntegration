@@ -1,0 +1,37 @@
+.header_cost {
+    padding-right: 20px;
+    color: rgb(0, 0, 0);
+}
+header {
+    font-weight: bold;
+    font-size: 30px;
+}
+.mat-card-image {
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+}
+.clear-cart {
+    float: right;
+    margin-top: 30px;
+}
+.header-text, .left {
+    float: left;
+}
+.left span {
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.clearfix:after {
+    clear: both;
+    display: table;
+    content: '';
+}
+.make-payment {
+    margin-top: 10px;
+}
+.payment-head {
+    margin-top: 20px;
+}

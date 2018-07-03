@@ -1,0 +1,28 @@
+.apparel-item {
+    width:33%;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: none !important;
+}
+.apparel-item:nth-of-type(3n+1) {
+    clear: both;
+}
+.mat-card-image {
+    width: 75%;
+    height: auto;
+}
+.apparel-item_inner {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 20px;
+}
+.mat-card-header-text {
+    width: 100% !important;
+}
+.size-selector, .quantity-selector {
+    width: 75%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+}

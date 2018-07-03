@@ -1,0 +1,40 @@
+<p>
+  {{routeName}}
+</p>
+<mat-card class="apparel-item" *ngFor="let item of apparels">
+  <div class="apparel-item_inner">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <!-- <button mat-icon-button color="primary">
+          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+        </button> -->
+      </div>
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img mat-card-image src="{{item.imageUrl}}" alt="">
+    <mat-card-content>
+      <p>
+        Price: {{item.price}}
+        <mat-form-field class="quantity-selector">
+          <mat-select placeholder="Quantity" [(value)]="item.selectedQuantity">
+            <mat-option *ngFor="let quant of item.quantity" [value]="quant">
+              {{quant}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="size-selector">
+          <mat-select placeholder="Available Sizes" [(value)]="item.selectedSize">
+            <mat-option *ngFor="let size of item.sizes" [value]="size">
+              {{size}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="openDialog(item)">VIEW</button>
+      <button mat-raised-button color="primary" (click)="addToCart(item)">ADD TO CART</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
