@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Apparel } from '../apparel';
-import { forEach } from '@angular/router/src/utils/collection';
 import { ActivatedRoute } from '@angular/router';
 import { WindowRef } from '../window-ref';
 import { DialogComponent } from '../dialog/dialog.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-category-landing',
@@ -39,10 +38,10 @@ export class CategoryLandingComponent implements OnInit {
   openDialog(product) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '50%',
-      data: { imgUrl: product.imageUrl}
+      data: { imgUrl: product.imageUrl }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
   }
