@@ -1,6 +1,7 @@
 # TestApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
+Built with Angular 5, nodeJs and .net Core 2.1
 
 ## Running APIs on local server
 
